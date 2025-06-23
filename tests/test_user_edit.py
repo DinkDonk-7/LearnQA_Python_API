@@ -92,6 +92,7 @@ class TestUserEdit(BaseCase):
             data={"firstName": new_name}
         )
 
+        Assertions.assert_code_status(response3, 400)
         Assertions.assert_json_has_key(response3, "error")
         Assertions.assert_json_value_by_name(
             response3,
@@ -99,7 +100,6 @@ class TestUserEdit(BaseCase):
             "This user can only edit their own data.",
             "Unexpected error message"
         )
-        Assertions.assert_code_status(response3, 400)
 
     def test_edit_email_without_at_symbol(self):
         # LOGIN

@@ -1,21 +1,26 @@
 import requests
+import allure
 
 class MyRequests():
     @staticmethod
     def post(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, 'POST')
+        with allure.step(F"POST request to url '{url}'"):
+            return MyRequests._send(url, data, headers, cookies, 'POST')
 
     @staticmethod
     def get(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, 'GET')
+        with allure.step(F"GET request to url '{url}'"):
+            return MyRequests._send(url, data, headers, cookies, 'GET')
 
     @staticmethod
     def put(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, 'PUT')
+        with allure.step(F"PUT request to url '{url}'"):
+            return MyRequests._send(url, data, headers, cookies, 'PUT')
 
     @staticmethod
     def delete(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, 'DELETE')
+        with allure.step(F"DELETE request to url '{url}'"):
+            return MyRequests._send(url, data, headers, cookies, 'DELETE')
 
 
     @staticmethod
